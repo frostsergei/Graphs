@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Graphs.MinimalEdgeCoverPage"
+             Title="МВП">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Entry Placeholder="Введите первую вершину ребра" x:Name="textBox1" Keyboard="Numeric" Grid.Row="0" Grid.Column="0" />
+                    <Entry Placeholder="Введите вторую вершину ребра" x:Name="textBox2" Keyboard="Numeric" Grid.Row="0" Grid.Column="1" />
+                    
+                    <Button Text="+" Clicked="AddEdge_Clicked" Grid.Row="1" Grid.Column="0"/>
+                    <Button Text="-" Clicked="RemoveEdge_Clicked" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Text="Запрет создания рёбер на себя" Grid.Row="2" Grid.Column="0"/>
+                    <Label Text="Выбирать случайные элементы из подходящих" Grid.Row="2" Grid.Column="1"/>
+
+                    <Switch IsToggled="true" x:Name="switchNoLops" Grid.Row="3" Grid.Column="0"/>
+                    <Switch IsToggled="false" x:Name="switchRandom" Grid.Row="3" Grid.Column="1"/>
+                </Grid>
+                <Button Text="Очистка" Clicked="ClearEdges_Clicked"/>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68"> 
+                </BoxView>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Введённые рёбра графа" x:Name="EdgesLabel" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Список смежности" x:Name="ListLabel" Grid.Row="0" Grid.Column="1" />
+                    
+                </Grid>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68">
+                </BoxView>
+
+                <Button Text="Жадный метод" Clicked="GreedyMethod_Clicked"/>
+                <Button Text="Точный метод" Clicked="PreciseMethod_Clicked"/>
+
+                <Label Text="Решение" x:Name="Solution" />
+                <Label Text="Ответ" x:Name="Answer" />
+
+            </StackLayout>
+            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
