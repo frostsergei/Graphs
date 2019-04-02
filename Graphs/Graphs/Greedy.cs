@@ -29,7 +29,7 @@ namespace Graphs
             log += "\n";
 
             int l = nodesMaxCount.Length;
-            int selected = (isRandom) ? (rand.Next(l - 1)) : (0);
+            int selected = (isRandom) ? (rand.Next(l)) : (0);
 
             result.Add(nodesMaxCount[selected]);
             graph.removeNode(nodesMaxCount[selected]);
