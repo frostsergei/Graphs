@@ -73,7 +73,7 @@ namespace Graphs
                 badDataMessage();
                 return;
             }
-            graph.addEdge(CheckNumber.getNumber(textBox1.Text), CheckNumber.getNumber(textBox2.Text), switchNoLops.IsToggled);
+            graph.removeEdge(CheckNumber.getNumber(textBox1.Text), CheckNumber.getNumber(textBox2.Text));
             showEdges();
             showList();
         }
