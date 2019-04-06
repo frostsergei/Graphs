@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Graphs.RackpackPage"
+             Title="Рюкзак">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                
+                <Label Text="Введите объём рюкзака" />
+                <Entry Placeholder="Объём рюкзака" Keyboard="Numeric" x:Name="textBoxVolume"/>
+                
+                <Grid x:Name="Field">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Номер предмета" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Вес предмета" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Стоимость предмета" Grid.Row="0" Grid.Column="2" />
+
+                    <Entry Placeholder="Номер" Keyboard="Numeric" x:Name="textBoxID" Grid.Row="1" Grid.Column="0"/>
+                    <Entry Placeholder="Вес" Keyboard="Numeric" x:Name="textBoxWeight" Grid.Row="1" Grid.Column="1"/>
+                    <Entry Placeholder="Стоимость" Keyboard="Numeric" x:Name="textBoxPrice" Grid.Row="1" Grid.Column="2"/>
+
+                    <Button Text="+" Clicked="AddClicked" Grid.Row="2" Grid.Column="0"/>
+                    <Button Text="Очистка" Clicked="ClearClicked" Grid.Row="2" Grid.Column="1"/>
+                    <Button Text="-" Clicked="RemoveClicked" Grid.Row="2" Grid.Column="2"/>
+                </Grid>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68">
+                </BoxView>
+
+                <Label Text="Введённые данные" x:Name="dataLabel"/>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68">
+                </BoxView>
+
+                <Button Text="Динамический метод" Clicked="DynamicClicked"/>
+
+                <BoxView   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="1"
+                   WidthRequest="50"  
+                   Color="#5b5d68">
+                </BoxView>
+
+                <Label Text="Решение" x:Name="Solution"/>
+                <Label Text="Ответ" x:Name="Answer"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

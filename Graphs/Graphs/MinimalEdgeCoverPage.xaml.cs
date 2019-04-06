@@ -49,7 +49,7 @@ namespace Graphs
             return CheckNumber.badData(s1, s2);
         }
 
-        private void badDataMessage()
+        public void badDataMessage()
         {
             DisplayAlert("Ошибка", "Проверьте введённые данные!", "ОК");
         }

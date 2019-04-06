@@ -6,7 +6,7 @@
 
     <TabbedPage.Children>
         <local:MinimalEdgeCoverPage></local:MinimalEdgeCoverPage>
-        
+        <local:RackpackPage></local:RackpackPage>
     </TabbedPage.Children>
 
 </TabbedPage>
