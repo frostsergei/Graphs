@@ -1,14 +1,14 @@
-﻿using System;
+﻿/// Author of all methods and related classes: Morozov Sergei
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Graphs
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MinimalEdgeCoverPage : ContentPage
 	{
         Graph graph;

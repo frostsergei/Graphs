@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿/// Author of all methods and related classes: Morozov Sergei
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Graphs
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RackpackPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RackpackPage : ContentPage
+    {
         Dictionary<int, RackpackItem> items;
 
-		public RackpackPage ()
-		{
-			InitializeComponent ();
+        public RackpackPage()
+        {
+            InitializeComponent();
             items = new Dictionary<int, RackpackItem>();
-		}
+        }
 
         private string showItems()
         {
@@ -68,7 +67,13 @@ namespace Graphs
 
         private void AddClicked(object sender, EventArgs e)
         {
-            if ((CheckNumber.badData(textBoxID.Text, textBoxWeight.Text)&&(CheckNumber.badData(textBoxPrice.Text, textBoxWeight.Text))))
+            if (CheckNumber.badData(textBoxID.Text, textBoxWeight.Text))
+            {
+                badDataMessage();
+                return;
+            }
+
+            if (CheckNumber.badData(textBoxPrice.Text, textBoxWeight.Text))
             {
                 badDataMessage();
                 return;
@@ -107,9 +112,69 @@ namespace Graphs
             ShowClearDialog();
         }
 
+        private void MinWeightClicked(object sender, EventArgs e)
+        {
+            Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
+            if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
+            {
+                badDataMessage();
+                return;
+            }
+            int volume = Convert.ToInt32(textBoxVolume.Text);
+
+            int w = 0;
+            int p = 0;
+            string log = string.Empty;
+
+            GreedyRackpack.GreedyMinWeight(data, volume, ref w, ref p, ref log);
+
+            Solution.Text = log;
+            Answer.Text = string.Empty;
+        }
+
+        private void MaxPriceClicked(object sender, EventArgs e)
+        {
+            Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
+            if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
+            {
+                badDataMessage();
+                return;
+            }
+            int volume = Convert.ToInt32(textBoxVolume.Text);
+
+            int w = 0;
+            int p = 0;
+            string log = string.Empty;
+
+            GreedyRackpack.GreedyMaxPrice(data, volume, ref w, ref p, ref log);
+
+            Solution.Text = log;
+            Answer.Text = string.Empty;
+        }
+
+        private void OptimalClicked(object sender, EventArgs e)
+        {
+            Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
+            if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
+            {
+                badDataMessage();
+                return;
+            }
+            int volume = Convert.ToInt32(textBoxVolume.Text);
+
+            int w = 0;
+            int p = 0;
+            string log = string.Empty;
+
+            GreedyRackpack.GreedyOptimal(data, volume, ref w, ref p, ref log);
+
+            Solution.Text = log;
+            Answer.Text = string.Empty;
+        }
+
         private void DynamicClicked(object sender, EventArgs e)
         {
-            var ordered = items.OrderBy(x=>x.Value.weight);
+            //var ordered = items.OrderBy(x=>x.Value.weight);
 
             if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
             {
@@ -157,5 +222,22 @@ namespace Graphs
             Answer.Text = "Начинаем движение из угла\n" + log + "\n" + ans;
         }
 
-    }
+        private void BranchAndBoundClicked(object sender, EventArgs e)
+        {
+            Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
+            if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
+            {
+                badDataMessage();
+                return;
+            }
+            int volume = Convert.ToInt32(textBoxVolume.Text);
+
+            string log = string.Empty;
+
+            RackpackBranchAndBound.BranchAndBound(data, 0, volume, 0, 0, ref log);
+
+            Solution.Text = log;
+            Answer.Text = string.Empty;
+        }
+    }   
 }

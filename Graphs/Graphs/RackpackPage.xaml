@@ -51,6 +51,10 @@
                    Color="#5b5d68">
                 </BoxView>
 
+                <Button Text="Жадный метод: по минимальному весу" Clicked="MinWeightClicked"/>
+                <Button Text="Жадный метод: по максимальной цене" Clicked="MaxPriceClicked"/>
+                <Button Text="Жадный метод: по удельной цене" Clicked="OptimalClicked"/>
+                <Button Text="Метод ветвей и границ" Clicked="BranchAndBoundClicked"/>
                 <Button Text="Динамический метод" Clicked="DynamicClicked"/>
 
                 <BoxView   VerticalOptions="Center"
