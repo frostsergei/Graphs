@@ -222,7 +222,7 @@ namespace Graphs
             Answer.Text = "Начинаем движение из угла\n" + log + "\n" + ans;
         }
 
-        private void BranchAndBoundClicked(object sender, EventArgs e)
+        private void GraphClicked(object sender, EventArgs e)
         {
             Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
             if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
@@ -238,6 +238,34 @@ namespace Graphs
 
             Solution.Text = log;
             Answer.Text = string.Empty;
+        }
+
+        private void BranchAndBoundClicked(object sender, EventArgs e)
+        {
+            Dictionary<int, RackpackItem> data = new Dictionary<int, RackpackItem>(items);
+            if (CheckNumber.badData(textBoxVolume.Text, textBoxVolume.Text))
+            {
+                badDataMessage();
+                return;
+            }
+            int volume = Convert.ToInt32(textBoxVolume.Text);
+
+            string log = string.Empty;
+
+            var myInts = items.Values.ToArray();
+            myInts = myInts.OrderByDescending(a => (a.price / a.weight)).ToArray();
+
+            string success = string.Empty;
+
+            int global = 0;
+
+            if (myInts[0].weight < volume)
+            {
+                BNB.start(myInts, 0, volume, 0, 0, volume * (myInts[0].price / myInts[0].weight), ref log, false, ref success, string.Empty, ref global);
+            }
+
+            Solution.Text = log;
+            Answer.Text = success;
         }
     }   
 }

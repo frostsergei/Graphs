@@ -51,6 +51,7 @@
                    Color="#5b5d68">
                 </BoxView>
 
+                <Button Text="Граф (перебор для самоконтроля)" Clicked="GraphClicked"/>
                 <Button Text="Жадный метод: по минимальному весу" Clicked="MinWeightClicked"/>
                 <Button Text="Жадный метод: по максимальной цене" Clicked="MaxPriceClicked"/>
                 <Button Text="Жадный метод: по удельной цене" Clicked="OptimalClicked"/>

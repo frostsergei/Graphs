@@ -8,6 +8,7 @@
         <local:MinimalEdgeCoverPage></local:MinimalEdgeCoverPage>
         <local:RackpackPage></local:RackpackPage>
         <local:PyramidPage></local:PyramidPage>
+        <local:SumPage></local:SumPage>
     </TabbedPage.Children>
 
 </TabbedPage>
